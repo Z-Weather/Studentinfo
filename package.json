@@ -12,9 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^5.1.1"
+    "pg": "^8.11.3"
   },
-  "devDependencies": {
-    "@vercel/node": "^3.0.0"
-  }
+  "devDependencies": {}
 }
