@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理系统</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <h1>学生信息管理系统</h1>
+        </nav>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 登录注册选择器 -->
+            <div class="auth-selector">
+                <div class="selector-buttons">
+                    <button id="adminLoginBtn" class="selector-btn active">管理员登录</button>
+                    <button id="studentLoginBtn" class="selector-btn">学生登录</button>
+                    <button id="studentRegisterBtn" class="selector-btn">学生注册</button>
+                </div>
+            </div>
+
+            <!-- 管理员登录表单 -->
+            <div id="adminLoginForm" class="auth-form active">
+                <div class="form-container">
+                    <h2>管理员登录</h2>
+                    <form id="adminLogin">
+                        <div class="form-group">
+                            <label for="adminUsername">用户名</label>
+                            <input type="text" id="adminUsername" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">密码</label>
+                            <input type="password" id="adminPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </form>
+                    <div class="form-hint">
+                        <p>默认管理员账号：admin / admin</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学生登录表单 -->
+            <div id="studentLoginForm" class="auth-form">
+                <div class="form-container">
+                    <h2>学生登录</h2>
+                    <form id="studentLogin">
+                        <div class="form-group">
+                            <label for="studentId">学号</label>
+                            <input type="text" id="studentId" name="studentId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentPassword">密码</label>
+                            <input type="password" id="studentPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 学生注册表单 -->
+            <div id="studentRegisterForm" class="auth-form">
+                <div class="form-container">
+                    <h2>学生注册</h2>
+                    <form id="studentRegister">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regStudentId">学号</label>
+                                <input type="text" id="regStudentId" name="studentId" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regName">姓名</label>
+                                <input type="text" id="regName" name="name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regGender">性别</label>
+                                <select id="regGender" name="gender" required>
+                                    <option value="">请选择</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="regAge">年龄</label>
+                                <input type="number" id="regAge" name="age" min="15" max="50" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regClass">班级</label>
+                                <input type="text" id="regClass" name="className" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regMajor">专业</label>
+                                <input type="text" id="regMajor" name="major" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regPhone">电话</label>
+                                <input type="tel" id="regPhone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regEmail">邮箱</label>
+                                <input type="email" id="regEmail" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword">密码</label>
+                            <input type="password" id="regPassword" name="password" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="regConfirmPassword">确认密码</label>
+                            <input type="password" id="regConfirmPassword" name="confirmPassword" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary">注册</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- 消息提示区域 -->
+        <div id="messageArea" class="message-area"></div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

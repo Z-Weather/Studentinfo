@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员 - 学生信息管理系统</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <h1>学生信息管理系统</h1>
+            <div class="user-info">
+                <span id="adminUsername">管理员</span>
+                <button id="logoutBtn" class="btn btn-secondary">退出登录</button>
+            </div>
+        </nav>
+
+        <!-- 管理员仪表板 -->
+        <main class="dashboard">
+            <div class="dashboard-header">
+                <h1>学生信息管理</h1>
+                <button id="addStudentBtn" class="btn btn-success">添加学生</button>
+            </div>
+
+            <!-- 搜索和筛选栏 -->
+            <div class="actions-bar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索学生姓名、学号或班级...">
+                    <button id="searchBtn">搜索</button>
+                </div>
+                <div class="filter-box">
+                    <select id="classFilter">
+                        <option value="">所有班级</option>
+                    </select>
+                    <select id="majorFilter">
+                        <option value="">所有专业</option>
+                    </select>
+                    <button id="filterBtn">筛选</button>
+                    <button id="resetBtn">重置</button>
+                </div>
+            </div>
+
+            <!-- 学生信息表格 -->
+            <div class="table-container">
+                <table id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>班级</th>
+                            <th>专业</th>
+                            <th>电话</th>
+                            <th>邮箱</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <!-- 学生数据将通过JavaScript动态加载 -->
+                    </tbody>
+                </table>
+                <div id="noDataMessage" class="no-data" style="display: none;">
+                    <p>暂无学生数据</p>
+                </div>
+            </div>
+
+            <!-- 分页控件 -->
+            <div class="pagination">
+                <button id="prevPageBtn">上一页</button>
+                <span id="pageInfo">第 1 页，共 1 页</span>
+                <button id="nextPageBtn">下一页</button>
+            </div>
+        </main>
+
+        <!-- 添加/编辑学生模态框 -->
+        <div id="studentModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">添加学生</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <form id="studentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalStudentId">学号</label>
+                            <input type="text" id="modalStudentId" name="studentId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalName">姓名</label>
+                            <input type="text" id="modalName" name="name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalGender">性别</label>
+                            <select id="modalGender" name="gender">
+                                <option value="">请选择</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalAge">年龄</label>
+                            <input type="number" id="modalAge" name="age" min="15" max="50">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalClass">班级</label>
+                            <input type="text" id="modalClass" name="className">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalMajor">专业</label>
+                            <input type="text" id="modalMajor" name="major">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalPhone">电话</label>
+                            <input type="tel" id="modalPhone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalEmail">邮箱</label>
+                            <input type="email" id="modalEmail" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalPassword">密码</label>
+                        <input type="password" id="modalPassword" name="password" placeholder="留空则不修改密码">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <button type="button" class="btn btn-secondary modal-close">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 删除确认模态框 -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>确认删除</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <p>确定要删除学生 <strong id="deleteStudentName"></strong> 的信息吗？</p>
+                <div class="form-actions">
+                    <button id="confirmDeleteBtn" class="btn btn-danger">确认删除</button>
+                    <button class="btn btn-secondary modal-close">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 消息提示区域 -->
+        <div id="messageArea" class="message-area"></div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

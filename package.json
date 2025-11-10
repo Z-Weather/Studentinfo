@@ -1,0 +1,20 @@
+{
+  "name": "student-info-system",
+  "version": "1.0.0",
+  "description": "学生信息管理系统",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "keywords": ["student", "management", "system", "vercel", "neon"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0"
+  }
+}
