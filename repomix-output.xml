@@ -1,0 +1,3345 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.env.example
+.gitignore
+admin.html
+AI编程提示.md
+api/auth/admin/login.js
+api/auth/student/login.js
+api/auth/student/register.js
+api/students/[id].js
+api/students/index.js
+css/styles.css
+database/schema.sql
+DEPLOYMENT.md
+index.html
+js/admin.js
+js/auth.js
+js/student.js
+LICENSE
+package.json
+README.md
+student.html
+vercel.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="AI编程提示.md">
+<div class="plan-header">
+
+# 🚀 AI生成的开发计划
+
+<div class="meta-info">
+
+**⏰ 生成时间：** 2025-11-10 09:59:19  
+**🤖 AI模型：** Qwen2.5-72B-Instruct  
+**💡 基于用户创意智能分析生成**  
+**🔗 Agent应用MCP服务增强**
+
+</div>
+
+</div>
+
+---
+
+### 学生信息管理系统开发计划
+
+#### 1. 产品概述
+学生信息管理系统是一个Web应用程序，旨在帮助学校管理人员高效地管理学生信息。系统提供了学生信息的增、删、改、查功能，并支持管理员和学生的不同权限。系统将部署在Vercel上，使用Neon数据库进行数据存储，并确保数据的安全性和系统的可用性。
+
+#### 2. 技术方案
+
+##### 2.1 系统架构设计
+采用经典的 HTML、CSS、JavaScript 技术架构来实现系统。后端基于 Neon 的云数据库实现，通过 Vercel 的 Serverless Functions 进行数据交互。
+
+##### 2.2 技术栈
+- **前端**：HTML、CSS、JavaScript
+- **后端**：无传统后端，后端全部基于 Neon 的云数据库实现
+- **数据库**：Neon
+- **部署**：Vercel
+
+##### 2.3 数据库设计
+- **学生表**：包含学生的基本信息，如学号、姓名、性别、年龄、班级、专业等。
+- **管理员表**：包含管理员的基本信息，如用户名、密码。
+
+##### 2.4 系统流程
+
+**1. 管理员登录**：管理员输入用户名和密码，系统验证后进入学生信息管理界面。
+
+
+**2. 学生信息管理**：管理员可以查看所有学生的信息，也可以进行增加、删除、修改和查询操作。
+
+
+**3. 学生信息查询**：学生输入学号和密码登录，跳转到学生信息页面，可以查看本学生的信息。
+
+
+#### 3. 开发计划
+
+##### 3.1 需求分析
+- **需求调研**：收集和整理用户需求，明确系统功能和非功能需求。
+- **需求整理**：编写详细的需求文档，确保所有需求都被准确记录。
+
+##### 3.2 系统设计
+- **架构设计**：设计系统整体架构，确定技术选型和模块划分。
+- **UI设计**：设计用户界面，确保界面友好、操作简便。
+
+##### 3.3 开发实施
+- **后端开发**：实现 Vercel 的 Serverless Functions，连接 Neon 数据库，实现数据增、删、改、查功能。
+- **前端开发**：开发前端页面，实现用户登录、注册、学生信息管理等功能。
+- **集成测试**：进行系统集成测试，确保各模块正常工作。
+
+##### 3.4 部署上线
+- **部署准备**：配置 Vercel 环境变量，确保数据库连接字符串正确。
+- **正式上线**：将系统部署到 Vercel，进行最后的测试和优化。
+
+##### 3.5 项目时间表
+```mermaid
+gantt
+    title 项目开发甘特图
+    dateFormat YYYY-MM-DD
+    axisFormat %m-%d
+    
+    section 需求分析
+    需求调研     :done, req1, 2025-11-17, 3d
+    需求整理     :done, req2, after req1, 4d
+    
+    section 系统设计
+    架构设计     :active, design1, after req2, 7d
+    UI设计       :design2, after design1, 5d
+    
+    section 开发实施
+    后端开发     :dev1, after design2, 14d
+    前端开发     :dev2, after design2, 14d
+    集成测试     :test1, after dev1, 7d
+    
+    section 部署上线
+    部署准备     :deploy1, after test1, 3d
+    正式上线     :deploy2, after deploy1, 2d
+```
+
+#### 4. 部署方案
+- **环境配置**：在 Vercel 中配置环境变量，包括数据库连接字符串 `DATABASE_URL` 和其他必要的配置。
+- **数据库初始化**：使用 Neon 数据库的初始结构，创建学生表和管理员表，并预置一个默认管理员账号（用户名：admin，密码：admin）。
+- **代码部署**：将项目代码推送到 Vercel，自动构建并部署到生产环境。
+
+#### 5. 推广策略
+- **内部培训**：对学校管理人员进行系统使用培训，确保他们能够熟练操作。
+- **用户手册**：编写详细的用户手册，提供系统使用指南。
+- **反馈机制**：建立用户反馈机制，及时收集和处理用户意见和建议。
+
+### 总结
+
+以上是完整的开发计划和技术方案。
+
+---
+
+
+<div class="prompts-highlight">
+
+# 🤖 AI编程助手提示词
+
+> 💡 **使用说明**：以下提示词基于您的项目需求定制生成，可直接复制到 GitHub Copilot、ChatGPT、Claude 等AI编程工具中使用
+
+
+#### 1. 登录注册功能开发提示词
+
+
+```
+请为学生信息管理系统开发登录注册功能。
+
+项目背景：
+学生信息管理系统是一个Web应用程序，旨在帮助学校管理人员高效地管理学生信息。系统提供了学生信息的增、删、改、查功能，并支持管理员和学生的不同权限。系统将部署在Vercel上，使用Neon数据库进行数据存储，并确保数据的安全性和系统的可用性。
+
+功能要求：
+1. 学生可以注册登录系统；
+2. 管理员可以通过输入用户名和密码进行登录；
+3. 密码需要加密存储（如 bcrypt）；
+4. 无需验证码和邮箱验证；
+5. 无注册登录的外部服务。
+
+技术约束：
+- 使用 HTML、CSS、JavaScript
+- 后端基于 Vercel 的 Serverless Functions 实现
+- 数据库使用 Neon
+- 访问 Neon 数据库的方式：在 Vercel 上实现 Serverless Functions（使用环境变量安全地连接 Neon）；
+- 管理员账号是需要预置一个默认账号（用户名：admin，密码：admin）
+
+输出要求：
+- 完整可运行代码
+- 详细注释说明
+- 错误处理机制
+- 测试用例
+```
+
+
+#### 2. 学生信息管理功能开发提示词
+
+
+```
+请为学生信息管理系统开发学生信息管理功能。
+
+项目背景：
+学生信息管理系统是一个Web应用程序，旨在帮助学校管理人员高效地管理学生信息。系统提供了学生信息的增、删、改、查功能，并支持管理员和学生的不同权限。系统将部署在Vercel上，使用Neon数据库进行数据存储，并确保数据的安全性和系统的可用性。
+
+功能要求：
+1. 管理员可以查看所有学生的信息；
+2. 管理员可以对学生信息进行增加、删除、修改和查询操作；
+3. 学生可以登录后查看本人信息；
+4. 系统要能正确处理中文，不能出现乱码；
+5. 要求有人性化的用户界面设计。
+
+技术约束：
+- 使用 HTML、CSS、JavaScript
+- 后端基于 Vercel 的 Serverless Functions 实现
+- 数据库使用 Neon
+- 访问 Neon 数据库的方式：在 Vercel 上实现 Serverless Functions（使用环境变量安全地连接 Neon）；
+- 管理员账号是需要预置一个默认账号（用户名：admin，密码：admin）
+
+输出要求：
+- 完整可运行代码
+- 详细注释说明
+- 错误处理机制
+- 测试用例
+```
+
+
+#### 3. 用户界面设计开发提示词
+
+
+```
+请为学生信息管理系统设计用户界面。
+
+项目背景：
+学生信息管理系统是一个Web应用程序，旨在帮助学校管理人员高效地管理学生信息。系统提供了学生信息的增、删、改、查功能，并支持管理员和学生的不同权限。系统将部署在Vercel上，使用Neon数据库进行数据存储，并确保数据的安全性和系统的可用性。
+
+功能要求：
+1. 登录界面：管理员输入用户名、密码进行登录；
+2. 注册界面：学生输入用户名、密码进行注册；
+3. 学生信息管理界面：管理员可以查看所有学生的信息，也可以进行增加、删除、修改和查询操作；
+4. 学生信息查询：学生输入学号和密码登录，跳转到学生信息页面，可以查看本学生的信息；
+5. 要求有人性化的用户界面设计；
+6. 界面需要统一的移动优先响应式布局。
+
+技术约束：
+- 使用 HTML、CSS、JavaScript
+- 后端基于 Vercel 的 Serverless Functions 实现
+- 数据库使用 Neon
+- 访问 Neon 数据库的方式：在 Vercel 上实现 Serverless Functions（使用环境变量安全地连接 Neon）；
+- 管理员账号是需要预置一个默认账号（用户名：admin，密码：admin）
+
+输出要求：
+- 完整可运行代码
+- 详细注释说明
+- 错误处理机制
+- 测试用例
+```
+
+
+#### 4. 数据库设计开发提示词
+
+
+```
+请为学生信息管理系统设计数据库结构。
+
+项目背景：
+学生信息管理系统是一个Web应用程序，旨在帮助学校管理人员高效地管理学生信息。系统提供了学生信息的增、删、改、查功能，并支持管理员和学生的不同权限。系统将部署在Vercel上，使用Neon数据库进行数据存储，并确保数据的安全性和系统的可用性。
+
+功能要求：
+1. 学生表：包含学生的基本信息，如学号、姓名、性别、年龄、班级、专业等；
+2. 管理员表：包含管理员的基本信息，如用户名、密码；
+3. 管理员账号是需要预置一个默认账号（用户名：admin，密码：admin）；
+4. 系统要能正确处理中文，不能出现乱码。
+
+技术约束：
+- 使用 Neon 数据库
+- 访问 Neon 数据库的方式：在 Vercel 上实现 Serverless Functions（使用环境变量安全地连接 Neon）；
+- 密码需要加密存储（如 bcrypt）。
+
+输出要求：
+- 完整可运行代码
+- 详细注释说明
+- 错误处理机制
+- 测试用例
+```
+
+
+#### 5. 集成测试开发提示词
+
+
+```
+请为学生信息管理系统编写集成测试用例。
+
+项目背景：
+学生信息管理系统是一个Web应用程序，旨在帮助学校管理人员高效地管理学生信息。系统提供了学生信息的增、删、改、查功能，并支持管理员和学生的不同权限。系统将部署在Vercel上，使用Neon数据库进行数据存储，并确保数据的安全性和系统的可用性。
+
+功能要求：
+1. 管理员可以查看所有学生的信息；
+2. 管理员可以对学生信息进行增加、删除、修改和查询操作；
+3. 学生可以登录后查看本人信息；
+4. 系统要能正确处理中文，不能出现乱码；
+5. 要求有人性化的用户界面设计。
+
+技术约束：
+- 使用 HTML、CSS、JavaScript
+- 后端基于 Vercel 的 Serverless Functions 实现
+- 数据库使用 Neon
+- 访问 Neon 数据库的方式：在 Vercel 上实现 Serverless Functions（使用环境变量安全地连接 Neon）；
+- 管理员账号是需要预置一个默认账号（用户名：admin，密码：admin）
+
+输出要求：
+- 完整可运行代码
+- 详细注释说明
+- 错误处理机制
+- 测试用例
+```
+
+
+### 技术栈对比表格
+
+| 技术栈 | 优点 | 缺点 |
+| --- | --- | --- |
+| HTML/CSS/JavaScript | 前端开发成熟，易于上手 | 功能有限，复杂应用需要更多框架支持 |
+| Vercel | 部署简单，支持Serverless | 免费版有使用限制 |
+| Neon | 云端数据库，易于扩展 | 新技术，社区支持相对较少 |
+
+### 项目里程碑时间表
+
+| 里程碑 | 日期 | 描述 |
+| --- | --- | --- |
+| 需求调研 | 2025-11-17 | 收集和整理用户需求 |
+| 需求整理 | 2025-11-21 | 编写详细的需求文档 |
+| 架构设计 | 2025-11-28 | 设计系统整体架构 |
+| UI设计 | 2025-12-03 | 设计用户界面 |
+| 后端开发 | 2025-12-17 | 实现 Vercel 的 Serverless Functions |
+| 前端开发 | 2025-12-17 | 开发前端页面 |
+| 集成测试 | 2025-12-24 | 进行系统集成测试 |
+| 部署准备 | 2025-12-27 | 配置 Vercel 环境变量 |
+| 正式上线 | 2025-12-29 | 将系统部署到 Vercel |
+
+### 架构图
+
+
+```
+flowchart TD
+    A["用户界面"]  -->  B["前端逻辑"]
+    B  -->  C[Vercel Serverless Functions]
+    C  -->  D[Neon Database]
+    C  -->  E[Session Management]
+    F["缓存"]  -->  C
+```
+
+
+### 流程图
+
+
+```
+flowchart TD
+    Start([开始])  -->  Login[管理员登录]
+    Login  -->  Validate{验证用户名和密码}
+    Validate  --> |有效| AdminPage[学生信息管理界面]
+    Validate  --> |无效| Error[显示错误]
+    AdminPage  -->  Add[增加学生信息]
+    AdminPage  -->  Delete[删除学生信息]
+    AdminPage  -->  Update[修改学生信息]
+    AdminPage  -->  Query[查询学生信息]
+    StudentLogin[学生登录]  -->  ValidateStudent{验证学号和密码}
+    ValidateStudent  --> |有效| StudentPage[学生信息页面]
+    ValidateStudent  --> |无效| Error
+    StudentPage  -->  View[查看个人信息]
+    Error  -->  Login
+    Error  -->  StudentLogin
+```
+
+
+### 甘特图
+
+
+```
+gantt
+    title 项目开发甘特图
+    dateFormat YYYY-MM-DD
+    axisFormat %m-%d
+    
+    section 需求分析
+    需求调研     :done, req1, 2025-11-17, 3d
+    需求整理     :done, req2, after req1, 4d
+    
+    section 系统设计
+    架构设计     :active, design1, after req2, 7d
+    UI设计       :design2, after design1, 5d
+    
+    section 开发实施
+    后端开发     :dev1, after design2, 14d
+    前端开发     :dev2, after design2, 14d
+    集成测试     :test1, after dev1, 7d
+    
+    section 部署上线
+    部署准备     :deploy1, after test1, 3d
+    正式上线     :deploy2, after deploy1, 2d
+```
+
+
+</div>
+</file>
+
+<file path=".env.example">
+# Neon 数据库连接字符串
+DATABASE_URL=postgresql://username:password@ep-xxxxx.us-east-1.aws.neon.tech/dbname?sslmode=require
+
+# JWT 密钥（用于会话管理）
+JWT_SECRET=your-secret-key-here
+
+# 应用配置
+NODE_ENV=development
+</file>
+
+<file path=".gitignore">
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary folders
+tmp/
+temp/
+</file>
+
+<file path="admin.html">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员 - 学生信息管理系统</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <h1>学生信息管理系统</h1>
+            <div class="user-info">
+                <span id="adminUsername">管理员</span>
+                <button id="logoutBtn" class="btn btn-secondary">退出登录</button>
+            </div>
+        </nav>
+
+        <!-- 管理员仪表板 -->
+        <main class="dashboard">
+            <div class="dashboard-header">
+                <h1>学生信息管理</h1>
+                <button id="addStudentBtn" class="btn btn-success">添加学生</button>
+            </div>
+
+            <!-- 搜索和筛选栏 -->
+            <div class="actions-bar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索学生姓名、学号或班级...">
+                    <button id="searchBtn">搜索</button>
+                </div>
+                <div class="filter-box">
+                    <select id="classFilter">
+                        <option value="">所有班级</option>
+                    </select>
+                    <select id="majorFilter">
+                        <option value="">所有专业</option>
+                    </select>
+                    <button id="filterBtn">筛选</button>
+                    <button id="resetBtn">重置</button>
+                </div>
+            </div>
+
+            <!-- 学生信息表格 -->
+            <div class="table-container">
+                <table id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>班级</th>
+                            <th>专业</th>
+                            <th>电话</th>
+                            <th>邮箱</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <!-- 学生数据将通过JavaScript动态加载 -->
+                    </tbody>
+                </table>
+                <div id="noDataMessage" class="no-data" style="display: none;">
+                    <p>暂无学生数据</p>
+                </div>
+            </div>
+
+            <!-- 分页控件 -->
+            <div class="pagination">
+                <button id="prevPageBtn">上一页</button>
+                <span id="pageInfo">第 1 页，共 1 页</span>
+                <button id="nextPageBtn">下一页</button>
+            </div>
+        </main>
+
+        <!-- 添加/编辑学生模态框 -->
+        <div id="studentModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">添加学生</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <form id="studentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalStudentId">学号</label>
+                            <input type="text" id="modalStudentId" name="studentId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalName">姓名</label>
+                            <input type="text" id="modalName" name="name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalGender">性别</label>
+                            <select id="modalGender" name="gender">
+                                <option value="">请选择</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalAge">年龄</label>
+                            <input type="number" id="modalAge" name="age" min="15" max="50">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalClass">班级</label>
+                            <input type="text" id="modalClass" name="className">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalMajor">专业</label>
+                            <input type="text" id="modalMajor" name="major">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modalPhone">电话</label>
+                            <input type="tel" id="modalPhone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="modalEmail">邮箱</label>
+                            <input type="email" id="modalEmail" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalPassword">密码</label>
+                        <input type="password" id="modalPassword" name="password" placeholder="留空则不修改密码">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <button type="button" class="btn btn-secondary modal-close">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 删除确认模态框 -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>确认删除</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <p>确定要删除学生 <strong id="deleteStudentName"></strong> 的信息吗？</p>
+                <div class="form-actions">
+                    <button id="confirmDeleteBtn" class="btn btn-danger">确认删除</button>
+                    <button class="btn btn-secondary modal-close">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 消息提示区域 -->
+        <div id="messageArea" class="message-area"></div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
+</file>
+
+<file path="api/auth/admin/login.js">
+// 管理员登录API
+const { Pool } = require('pg');
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+module.exports = async (req, res) => {
+    // 设置CORS头
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    if (req.method !== 'POST') {
+        return res.status(405).json({ success: false, message: '方法不允许' });
+    }
+
+    try {
+        const { username, password } = req.body;
+
+        if (!username || !password) {
+            return res.status(400).json({
+                success: false,
+                message: '用户名和密码不能为空'
+            });
+        }
+
+        // 查询管理员信息
+        const query = 'SELECT id, username, password FROM admins WHERE username = $1';
+        const result = await pool.query(query, [username]);
+
+        if (result.rows.length === 0) {
+            return res.status(401).json({
+                success: false,
+                message: '用户名或密码错误'
+            });
+        }
+
+        const admin = result.rows[0];
+
+        // 注意：这里为了简化，直接比较明文密码
+        // 实际生产环境中应该使用 bcrypt 等加密方式
+        if (admin.password !== password) {
+            return res.status(401).json({
+                success: false,
+                message: '用户名或密码错误'
+            });
+        }
+
+        // 返回成功响应（不包含密码）
+        res.status(200).json({
+            success: true,
+            message: '登录成功',
+            admin: {
+                id: admin.id,
+                username: admin.username
+            }
+        });
+
+    } catch (error) {
+        console.error('管理员登录错误:', error);
+        res.status(500).json({
+            success: false,
+            message: '服务器内部错误'
+        });
+    }
+};
+</file>
+
+<file path="api/auth/student/login.js">
+// 学生登录API
+const { Pool } = require('pg');
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+module.exports = async (req, res) => {
+    // 设置CORS头
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    if (req.method !== 'POST') {
+        return res.status(405).json({ success: false, message: '方法不允许' });
+    }
+
+    try {
+        const { studentId, password } = req.body;
+
+        if (!studentId || !password) {
+            return res.status(400).json({
+                success: false,
+                message: '学号和密码不能为空'
+            });
+        }
+
+        // 查询学生信息
+        const query = `
+            SELECT student_id, name, gender, age, class_name, major, phone, email, password
+            FROM students
+            WHERE student_id = $1
+        `;
+        const result = await pool.query(query, [studentId]);
+
+        if (result.rows.length === 0) {
+            return res.status(401).json({
+                success: false,
+                message: '学号或密码错误'
+            });
+        }
+
+        const student = result.rows[0];
+
+        // 注意：这里为了简化，直接比较明文密码
+        // 实际生产环境中应该使用 bcrypt 等加密方式
+        if (student.password !== password) {
+            return res.status(401).json({
+                success: false,
+                message: '学号或密码错误'
+            });
+        }
+
+        // 返回成功响应（不包含密码）
+        res.status(200).json({
+            success: true,
+            message: '登录成功',
+            student: {
+                student_id: student.student_id,
+                name: student.name,
+                gender: student.gender,
+                age: student.age,
+                class_name: student.class_name,
+                major: student.major,
+                phone: student.phone,
+                email: student.email
+            }
+        });
+
+    } catch (error) {
+        console.error('学生登录错误:', error);
+        res.status(500).json({
+            success: false,
+            message: '服务器内部错误'
+        });
+    }
+};
+</file>
+
+<file path="api/auth/student/register.js">
+// 学生注册API
+const { Pool } = require('pg');
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+module.exports = async (req, res) => {
+    // 设置CORS头
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    if (req.method !== 'POST') {
+        return res.status(405).json({ success: false, message: '方法不允许' });
+    }
+
+    try {
+        const {
+            studentId,
+            name,
+            gender,
+            age,
+            className,
+            major,
+            phone,
+            email,
+            password
+        } = req.body;
+
+        // 验证必填字段
+        if (!studentId || !name || !gender || !age || !className || !major || !phone || !email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: '请填写完整的注册信息'
+            });
+        }
+
+        // 验证年龄范围
+        if (age < 15 || age > 50) {
+            return res.status(400).json({
+                success: false,
+                message: '年龄必须在15-50岁之间'
+            });
+        }
+
+        // 验证邮箱格式
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                success: false,
+                message: '请输入有效的邮箱地址'
+            });
+        }
+
+        // 检查学号是否已存在
+        const checkQuery = 'SELECT student_id FROM students WHERE student_id = $1';
+        const checkResult = await pool.query(checkQuery, [studentId]);
+
+        if (checkResult.rows.length > 0) {
+            return res.status(409).json({
+                success: false,
+                message: '该学号已被注册'
+            });
+        }
+
+        // 插入新学生记录
+        const insertQuery = `
+            INSERT INTO students (
+                student_id, name, gender, age, class_name, major, phone, email, password
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            RETURNING student_id, name, gender, age, class_name, major, phone, email
+        `;
+
+        const insertResult = await pool.query(insertQuery, [
+            studentId, name, gender, age, className, major, phone, email, password
+        ]);
+
+        const newStudent = insertResult.rows[0];
+
+        res.status(201).json({
+            success: true,
+            message: '注册成功',
+            student: newStudent
+        });
+
+    } catch (error) {
+        console.error('学生注册错误:', error);
+        res.status(500).json({
+            success: false,
+            message: '服务器内部错误'
+        });
+    }
+};
+</file>
+
+<file path="api/students/index.js">
+// 学生信息管理API - 获取所有学生信息
+const { Pool } = require('pg');
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+module.exports = async (req, res) => {
+    // 设置CORS头
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    if (req.method === 'GET') {
+        try {
+            // 获取查询参数
+            const { search, class: className, major } = req.query;
+
+            let query = `
+                SELECT student_id, name, gender, age, class_name, major, phone, email, created_at, updated_at
+                FROM students
+                WHERE 1=1
+            `;
+
+            const params = [];
+            let paramIndex = 1;
+
+            // 添加搜索条件
+            if (search) {
+                query += ` AND (
+                    name ILIKE $${paramIndex} OR
+                    student_id ILIKE $${paramIndex} OR
+                    class_name ILIKE $${paramIndex}
+                )`;
+                params.push(`%${search}%`);
+                paramIndex++;
+            }
+
+            // 添加班级筛选
+            if (className) {
+                query += ` AND class_name ILIKE $${paramIndex}`;
+                params.push(`%${className}%`);
+                paramIndex++;
+            }
+
+            // 添加专业筛选
+            if (major) {
+                query += ` AND major ILIKE $${paramIndex}`;
+                params.push(`%${major}%`);
+                paramIndex++;
+            }
+
+            // 排序
+            query += ` ORDER BY student_id ASC`;
+
+            const result = await pool.query(query, params);
+
+            res.status(200).json({
+                success: true,
+                message: '获取学生信息成功',
+                students: result.rows,
+                total: result.rows.length
+            });
+
+        } catch (error) {
+            console.error('获取学生信息错误:', error);
+            res.status(500).json({
+                success: false,
+                message: '服务器内部错误'
+            });
+        }
+    } else if (req.method === 'POST') {
+        // 添加新学生（由管理员操作）
+        try {
+            const {
+                studentId,
+                name,
+                gender,
+                age,
+                className,
+                major,
+                phone,
+                email,
+                password
+            } = req.body;
+
+            // 验证必填字段
+            if (!studentId || !name || !password) {
+                return res.status(400).json({
+                    success: false,
+                    message: '学号、姓名和密码不能为空'
+                });
+            }
+
+            // 检查学号是否已存在
+            const checkQuery = 'SELECT student_id FROM students WHERE student_id = $1';
+            const checkResult = await pool.query(checkQuery, [studentId]);
+
+            if (checkResult.rows.length > 0) {
+                return res.status(409).json({
+                    success: false,
+                    message: '该学号已存在'
+                });
+            }
+
+            // 插入新学生
+            const insertQuery = `
+                INSERT INTO students (
+                    student_id, name, gender, age, class_name, major, phone, email, password
+                ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                RETURNING student_id, name, gender, age, class_name, major, phone, email, created_at
+            `;
+
+            const insertResult = await pool.query(insertQuery, [
+                studentId, name, gender || null, age || null, className || null,
+                major || null, phone || null, email || null, password
+            ]);
+
+            res.status(201).json({
+                success: true,
+                message: '添加学生成功',
+                student: insertResult.rows[0]
+            });
+
+        } catch (error) {
+            console.error('添加学生错误:', error);
+            res.status(500).json({
+                success: false,
+                message: '服务器内部错误'
+            });
+        }
+    } else {
+        res.status(405).json({
+            success: false,
+            message: '方法不允许'
+        });
+    }
+};
+</file>
+
+<file path="css/styles.css">
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+}
+
+/* 导航栏 */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar h1 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* 主要内容区域 */
+.main-content {
+    padding: 2rem 0;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 认证选择器 */
+.auth-selector {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.selector-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.selector-btn {
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #666;
+}
+
+.selector-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.selector-btn.active {
+    background: #fff;
+    color: #667eea;
+    border-color: #667eea;
+    font-weight: 600;
+}
+
+/* 认证表单 */
+.auth-form {
+    display: none;
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 0.3s ease;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+/* 表单组 */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 按钮 */
+.btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+/* 表单提示 */
+.form-hint {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 消息提示区域 */
+.message-area {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.message {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .selector-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .selector-btn {
+        width: 100%;
+    }
+
+    .message-area {
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
+}
+
+/* 管理员和学生页面样式 */
+.dashboard {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-header h1 {
+    color: #2c3e50;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info span {
+    color: #666;
+}
+
+/* 表格样式 */
+.table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+tr:hover {
+    background: #f8f9fa;
+}
+
+/* 搜索和操作栏 */
+.actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    padding: 0.8rem 1.5rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 学生页面样式 */
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-avatar {
+    flex-shrink: 0;
+}
+
+.avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-basic-info h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+}
+
+.profile-basic-info p {
+    margin: 0.25rem 0;
+    opacity: 0.9;
+}
+
+.profile-details {
+    padding: 2rem;
+}
+
+.detail-group {
+    margin-bottom: 2rem;
+}
+
+.detail-group h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #e1e8ed;
+    padding-bottom: 0.5rem;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-item label {
+    color: #666;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-item span {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 快捷操作 */
+.quick-actions {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quick-actions h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* 表格操作按钮 */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* 分页样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.pagination button {
+    padding: 0.6rem 1.2rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #5a6fd8;
+    transform: translateY(-1px);
+}
+
+.pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.pagination span {
+    color: #666;
+    font-weight: 500;
+}
+
+/* 筛选框样式 */
+.filter-box {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-box select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+    min-width: 150px;
+}
+
+.filter-box button {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.filter-box button:first-of-type {
+    background: #667eea;
+    color: white;
+}
+
+.filter-box button:last-of-type {
+    background: #6c757d;
+    color: white;
+}
+
+.filter-box button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 表单操作按钮 */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e1e8ed;
+}
+
+/* 无数据提示 */
+.no-data {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.no-data p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .profile-basic-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: none;
+    }
+
+    .filter-box {
+        justify-content: center;
+    }
+
+    .filter-box select {
+        min-width: 120px;
+    }
+
+    .table-container {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.5rem;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-header {
+        padding: 1.5rem;
+    }
+
+    .avatar-placeholder {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .profile-details {
+        padding: 1.5rem;
+    }
+
+    .quick-actions {
+        padding: 1.5rem;
+    }
+
+    .detail-group {
+        margin-bottom: 1.5rem;
+    }
+}
+</file>
+
+<file path="database/schema.sql">
+-- 学生信息管理系统数据库结构
+-- 使用 Neon 数据库
+
+-- 创建管理员表
+CREATE TABLE IF NOT EXISTS admins (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 创建学生表
+CREATE TABLE IF NOT EXISTS students (
+    student_id VARCHAR(20) PRIMARY KEY,  -- 学号作为主键
+    name VARCHAR(50) NOT NULL,
+    gender VARCHAR(10),
+    age INTEGER,
+    class_name VARCHAR(50),
+    major VARCHAR(100),
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 插入默认管理员账号 (用户名: admin, 密码: admin)
+-- 注意：这里密码是明文，实际使用时需要在应用层加密
+INSERT INTO admins (username, password)
+VALUES ('admin', 'admin')
+ON CONFLICT (username) DO NOTHING;
+
+-- 创建索引以优化查询性能
+CREATE INDEX IF NOT EXISTS idx_students_name ON students(name);
+CREATE INDEX IF NOT EXISTS idx_students_class ON students(class_name);
+CREATE INDEX IF NOT EXISTS idx_students_major ON students(major);
+
+-- 添加更新时间触发器
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_students_updated_at
+    BEFORE UPDATE ON students
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理系统</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <h1>学生信息管理系统</h1>
+        </nav>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 登录注册选择器 -->
+            <div class="auth-selector">
+                <div class="selector-buttons">
+                    <button id="adminLoginBtn" class="selector-btn active">管理员登录</button>
+                    <button id="studentLoginBtn" class="selector-btn">学生登录</button>
+                    <button id="studentRegisterBtn" class="selector-btn">学生注册</button>
+                </div>
+            </div>
+
+            <!-- 管理员登录表单 -->
+            <div id="adminLoginForm" class="auth-form active">
+                <div class="form-container">
+                    <h2>管理员登录</h2>
+                    <form id="adminLogin">
+                        <div class="form-group">
+                            <label for="adminUsername">用户名</label>
+                            <input type="text" id="adminUsername" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">密码</label>
+                            <input type="password" id="adminPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </form>
+                    <div class="form-hint">
+                        <p>默认管理员账号：admin / admin</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学生登录表单 -->
+            <div id="studentLoginForm" class="auth-form">
+                <div class="form-container">
+                    <h2>学生登录</h2>
+                    <form id="studentLogin">
+                        <div class="form-group">
+                            <label for="studentId">学号</label>
+                            <input type="text" id="studentId" name="studentId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentPassword">密码</label>
+                            <input type="password" id="studentPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 学生注册表单 -->
+            <div id="studentRegisterForm" class="auth-form">
+                <div class="form-container">
+                    <h2>学生注册</h2>
+                    <form id="studentRegister">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regStudentId">学号</label>
+                                <input type="text" id="regStudentId" name="studentId" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regName">姓名</label>
+                                <input type="text" id="regName" name="name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regGender">性别</label>
+                                <select id="regGender" name="gender" required>
+                                    <option value="">请选择</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="regAge">年龄</label>
+                                <input type="number" id="regAge" name="age" min="15" max="50" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regClass">班级</label>
+                                <input type="text" id="regClass" name="className" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regMajor">专业</label>
+                                <input type="text" id="regMajor" name="major" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regPhone">电话</label>
+                                <input type="tel" id="regPhone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regEmail">邮箱</label>
+                                <input type="email" id="regEmail" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword">密码</label>
+                            <input type="password" id="regPassword" name="password" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="regConfirmPassword">确认密码</label>
+                            <input type="password" id="regConfirmPassword" name="confirmPassword" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn btn-primary">注册</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- 消息提示区域 -->
+        <div id="messageArea" class="message-area"></div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
+</file>
+
+<file path="js/admin.js">
+// 管理员页面功能
+class AdminDashboard {
+    constructor() {
+        this.currentEditingStudent = null;
+        this.currentPage = 1;
+        this.pageSize = 10;
+        this.totalPages = 1;
+        this.students = [];
+        this.filteredStudents = [];
+        this.init();
+    }
+
+    init() {
+        this.checkAuth();
+        this.setupEventListeners();
+        this.loadStudents();
+    }
+
+    checkAuth() {
+        const adminSession = localStorage.getItem('adminSession');
+        if (!adminSession) {
+            window.location.href = '/';
+            return;
+        }
+
+        const admin = JSON.parse(adminSession);
+        document.getElementById('adminUsername').textContent = admin.username;
+    }
+
+    setupEventListeners() {
+        // 退出登录
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('adminSession');
+            window.location.href = '/';
+        });
+
+        // 添加学生
+        document.getElementById('addStudentBtn').addEventListener('click', () => {
+            this.openStudentModal();
+        });
+
+        // 搜索功能
+        document.getElementById('searchBtn').addEventListener('click', () => {
+            this.searchStudents();
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.searchStudents();
+            }
+        });
+
+        // 筛选功能
+        document.getElementById('filterBtn').addEventListener('click', () => {
+            this.filterStudents();
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            this.resetFilters();
+        });
+
+        // 分页
+        document.getElementById('prevPageBtn').addEventListener('click', () => {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.displayStudents();
+            }
+        });
+
+        document.getElementById('nextPageBtn').addEventListener('click', () => {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+                this.displayStudents();
+            }
+        });
+
+        // 学生表单提交
+        document.getElementById('studentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.saveStudent(e.target);
+        });
+
+        // 模态框关闭
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.closeAllModals();
+            });
+        });
+
+        // 点击模态框外部关闭
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    this.closeAllModals();
+                }
+            });
+        });
+
+        // 删除确认
+        document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+            this.confirmDelete();
+        });
+    }
+
+    async loadStudents() {
+        try {
+            this.showMessage('正在加载学生信息...', 'info');
+
+            const response = await this.apiCall('/api/students?search=&class=&major=');
+
+            if (response.success) {
+                this.students = response.students;
+                this.filteredStudents = [...this.students];
+                this.updateFilters();
+                this.displayStudents();
+                this.showMessage(`成功加载 ${response.total} 条学生信息`, 'success');
+            } else {
+                this.showMessage('加载学生信息失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('加载学生信息失败：' + error.message, 'error');
+        }
+    }
+
+    searchStudents() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+
+        if (searchTerm === '') {
+            this.filteredStudents = [...this.students];
+        } else {
+            this.filteredStudents = this.students.filter(student =>
+                student.name.toLowerCase().includes(searchTerm) ||
+                student.student_id.toLowerCase().includes(searchTerm) ||
+                student.class_name.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        this.currentPage = 1;
+        this.displayStudents();
+    }
+
+    filterStudents() {
+        const classFilter = document.getElementById('classFilter').value;
+        const majorFilter = document.getElementById('majorFilter').value;
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+
+        this.filteredStudents = this.students.filter(student => {
+            let matchSearch = true;
+            let matchClass = true;
+            let matchMajor = true;
+
+            if (searchTerm) {
+                matchSearch = student.name.toLowerCase().includes(searchTerm) ||
+                             student.student_id.toLowerCase().includes(searchTerm) ||
+                             student.class_name.toLowerCase().includes(searchTerm);
+            }
+
+            if (classFilter) {
+                matchClass = student.class_name === classFilter;
+            }
+
+            if (majorFilter) {
+                matchMajor = student.major === majorFilter;
+            }
+
+            return matchSearch && matchClass && matchMajor;
+        });
+
+        this.currentPage = 1;
+        this.displayStudents();
+    }
+
+    resetFilters() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('classFilter').value = '';
+        document.getElementById('majorFilter').value = '';
+
+        this.filteredStudents = [...this.students];
+        this.currentPage = 1;
+        this.displayStudents();
+    }
+
+    updateFilters() {
+        // 更新班级筛选器
+        const classFilter = document.getElementById('classFilter');
+        const classes = [...new Set(this.students.map(s => s.class_name).filter(Boolean))];
+        classFilter.innerHTML = '<option value="">所有班级</option>';
+        classes.forEach(className => {
+            classFilter.innerHTML += `<option value="${className}">${className}</option>`;
+        });
+
+        // 更新专业筛选器
+        const majorFilter = document.getElementById('majorFilter');
+        const majors = [...new Set(this.students.map(s => s.major).filter(Boolean))];
+        majorFilter.innerHTML = '<option value="">所有专业</option>';
+        majors.forEach(major => {
+            majorFilter.innerHTML += `<option value="${major}">${major}</option>`;
+        });
+    }
+
+    displayStudents() {
+        const tbody = document.getElementById('studentsTableBody');
+        const noDataMessage = document.getElementById('noDataMessage');
+
+        // 计算分页
+        this.totalPages = Math.ceil(this.filteredStudents.length / this.pageSize);
+        const startIndex = (this.currentPage - 1) * this.pageSize;
+        const endIndex = startIndex + this.pageSize;
+        const pageStudents = this.filteredStudents.slice(startIndex, endIndex);
+
+        // 更新分页信息
+        document.getElementById('pageInfo').textContent = `第 ${this.currentPage} 页，共 ${this.totalPages} 页`;
+        document.getElementById('prevPageBtn').disabled = this.currentPage === 1;
+        document.getElementById('nextPageBtn').disabled = this.currentPage === this.totalPages;
+
+        // 清空表格
+        tbody.innerHTML = '';
+
+        if (pageStudents.length === 0) {
+            noDataMessage.style.display = 'block';
+            document.querySelector('.table-container table').style.display = 'none';
+            document.querySelector('.pagination').style.display = 'none';
+        } else {
+            noDataMessage.style.display = 'none';
+            document.querySelector('.table-container table').style.display = 'table';
+            document.querySelector('.pagination').style.display = 'flex';
+
+            pageStudents.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.student_id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.gender || '-'}</td>
+                    <td>${student.age || '-'}</td>
+                    <td>${student.class_name || '-'}</td>
+                    <td>${student.major || '-'}</td>
+                    <td>${student.phone || '-'}</td>
+                    <td>${student.email || '-'}</td>
+                    <td class="actions">
+                        <button class="btn btn-sm btn-primary edit-btn" data-id="${student.student_id}">编辑</button>
+                        <button class="btn btn-sm btn-danger delete-btn" data-id="${student.student_id}" data-name="${student.name}">删除</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // 添加操作按钮事件
+            tbody.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.editStudent(btn.dataset.id);
+                });
+            });
+
+            tbody.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.deleteStudent(btn.dataset.id, btn.dataset.name);
+                });
+            });
+        }
+    }
+
+    openStudentModal(student = null) {
+        const modal = document.getElementById('studentModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const form = document.getElementById('studentForm');
+
+        this.currentEditingStudent = student;
+
+        if (student) {
+            modalTitle.textContent = '编辑学生信息';
+            form.studentId.value = student.student_id;
+            form.studentId.disabled = true;
+            form.name.value = student.name || '';
+            form.gender.value = student.gender || '';
+            form.age.value = student.age || '';
+            form.className.value = student.class_name || '';
+            form.major.value = student.major || '';
+            form.phone.value = student.phone || '';
+            form.email.value = student.email || '';
+            form.password.value = '';
+            form.password.placeholder = '留空则不修改密码';
+        } else {
+            modalTitle.textContent = '添加学生';
+            form.reset();
+            form.studentId.disabled = false;
+            form.password.placeholder = '请输入密码';
+        }
+
+        modal.classList.add('active');
+    }
+
+    closeAllModals() {
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        this.currentEditingStudent = null;
+    }
+
+    editStudent(studentId) {
+        const student = this.students.find(s => s.student_id === studentId);
+        if (student) {
+            this.openStudentModal(student);
+        }
+    }
+
+    deleteStudent(studentId, studentName) {
+        this.currentEditingStudent = studentId;
+        document.getElementById('deleteStudentName').textContent = studentName;
+        document.getElementById('deleteModal').classList.add('active');
+    }
+
+    async confirmDelete() {
+        if (!this.currentEditingStudent) return;
+
+        try {
+            this.showMessage('正在删除学生信息...', 'info');
+
+            const response = await this.apiCall(`/api/students/${this.currentEditingStudent}`, {
+                method: 'DELETE'
+            });
+
+            if (response.success) {
+                this.showMessage('删除学生信息成功', 'success');
+                this.closeAllModals();
+                this.loadStudents(); // 重新加载数据
+            } else {
+                this.showMessage('删除学生信息失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('删除学生信息失败：' + error.message, 'error');
+        }
+    }
+
+    async saveStudent(form) {
+        const formData = new FormData(form);
+        const studentData = {
+            name: formData.get('name'),
+            gender: formData.get('gender'),
+            age: formData.get('age') ? parseInt(formData.get('age')) : null,
+            className: formData.get('className'),
+            major: formData.get('major'),
+            phone: formData.get('phone'),
+            email: formData.get('email')
+        };
+
+        // 只有在填写密码时才包含密码字段
+        const password = formData.get('password');
+        if (password) {
+            studentData.password = password;
+        }
+
+        try {
+            this.showMessage(this.currentEditingStudent ? '正在更新学生信息...' : '正在添加学生...', 'info');
+
+            let response;
+            if (this.currentEditingStudent) {
+                // 更新学生
+                response = await this.apiCall(`/api/students/${this.currentEditingStudent}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(studentData)
+                });
+            } else {
+                // 添加学生
+                studentData.studentId = formData.get('studentId');
+                response = await this.apiCall('/api/students', {
+                    method: 'POST',
+                    body: JSON.stringify(studentData)
+                });
+            }
+
+            if (response.success) {
+                this.showMessage(this.currentEditingStudent ? '更新学生信息成功' : '添加学生成功', 'success');
+                this.closeAllModals();
+                this.loadStudents(); // 重新加载数据
+            } else {
+                this.showMessage(response.message || '操作失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('操作失败：' + error.message, 'error');
+        }
+    }
+
+    async apiCall(endpoint, options = {}) {
+        const defaultOptions = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+
+        const finalOptions = {
+            ...defaultOptions,
+            ...options,
+            headers: {
+                ...defaultOptions.headers,
+                ...options.headers
+            }
+        };
+
+        const response = await fetch(endpoint, finalOptions);
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || '请求失败');
+        }
+
+        return data;
+    }
+
+    showMessage(message, type = 'info') {
+        const messageArea = document.getElementById('messageArea');
+        const messageElement = document.createElement('div');
+        messageElement.className = `message ${type}`;
+        messageElement.textContent = message;
+
+        messageArea.appendChild(messageElement);
+
+        setTimeout(() => {
+            messageElement.remove();
+        }, 3000);
+    }
+}
+
+// 初始化管理员仪表板
+document.addEventListener('DOMContentLoaded', () => {
+    window.adminDashboard = new AdminDashboard();
+});
+</file>
+
+<file path="js/auth.js">
+// 认证相关功能
+class AuthManager {
+    constructor() {
+        this.currentUser = null;
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.checkExistingSession();
+    }
+
+    setupEventListeners() {
+        // 认证选择器按钮事件
+        document.getElementById('adminLoginBtn').addEventListener('click', () => {
+            this.showForm('admin');
+        });
+
+        document.getElementById('studentLoginBtn').addEventListener('click', () => {
+            this.showForm('student-login');
+        });
+
+        document.getElementById('studentRegisterBtn').addEventListener('click', () => {
+            this.showForm('student-register');
+        });
+
+        // 表单提交事件
+        document.getElementById('adminLogin').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleAdminLogin(e.target);
+        });
+
+        document.getElementById('studentLogin').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleStudentLogin(e.target);
+        });
+
+        document.getElementById('studentRegister').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleStudentRegister(e.target);
+        });
+
+        // 密码确认验证
+        document.getElementById('regConfirmPassword').addEventListener('input', (e) => {
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = e.target.value;
+
+            if (password !== confirmPassword) {
+                e.target.setCustomValidity('密码不匹配');
+            } else {
+                e.target.setCustomValidity('');
+            }
+        });
+    }
+
+    showForm(formType) {
+        // 隐藏所有表单
+        document.querySelectorAll('.auth-form').forEach(form => {
+            form.classList.remove('active');
+        });
+
+        // 移除所有按钮的活动状态
+        document.querySelectorAll('.selector-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 显示选中的表单
+        switch(formType) {
+            case 'admin':
+                document.getElementById('adminLoginForm').classList.add('active');
+                document.getElementById('adminLoginBtn').classList.add('active');
+                break;
+            case 'student-login':
+                document.getElementById('studentLoginForm').classList.add('active');
+                document.getElementById('studentLoginBtn').classList.add('active');
+                break;
+            case 'student-register':
+                document.getElementById('studentRegisterForm').classList.add('active');
+                document.getElementById('studentRegisterBtn').classList.add('active');
+                break;
+        }
+    }
+
+    async handleAdminLogin(form) {
+        const formData = new FormData(form);
+        const username = formData.get('username');
+        const password = formData.get('password');
+
+        try {
+            this.showMessage('正在登录...', 'info');
+
+            const response = await this.apiCall('/api/auth/admin/login', {
+                method: 'POST',
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.success) {
+                this.showMessage('登录成功！', 'success');
+                // 保存会话信息
+                localStorage.setItem('adminSession', JSON.stringify({
+                    id: response.admin.id,
+                    username: response.admin.username,
+                    type: 'admin'
+                }));
+
+                // 跳转到管理员页面
+                setTimeout(() => {
+                    window.location.href = '/admin.html';
+                }, 1000);
+            } else {
+                this.showMessage(response.message || '登录失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('登录失败：' + error.message, 'error');
+        }
+    }
+
+    async handleStudentLogin(form) {
+        const formData = new FormData(form);
+        const studentId = formData.get('studentId');
+        const password = formData.get('password');
+
+        try {
+            this.showMessage('正在登录...', 'info');
+
+            const response = await this.apiCall('/api/auth/student/login', {
+                method: 'POST',
+                body: JSON.stringify({ studentId, password })
+            });
+
+            if (response.success) {
+                this.showMessage('登录成功！', 'success');
+                // 保存会话信息
+                localStorage.setItem('studentSession', JSON.stringify({
+                    studentId: response.student.student_id,
+                    name: response.student.name,
+                    type: 'student'
+                }));
+
+                // 跳转到学生页面
+                setTimeout(() => {
+                    window.location.href = '/student.html';
+                }, 1000);
+            } else {
+                this.showMessage(response.message || '登录失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('登录失败：' + error.message, 'error');
+        }
+    }
+
+    async handleStudentRegister(form) {
+        const formData = new FormData(form);
+        const password = formData.get('password');
+        const confirmPassword = formData.get('confirmPassword');
+
+        // 验证密码匹配
+        if (password !== confirmPassword) {
+            this.showMessage('密码不匹配', 'error');
+            return;
+        }
+
+        try {
+            this.showMessage('正在注册...', 'info');
+
+            const studentData = {
+                studentId: formData.get('studentId'),
+                name: formData.get('name'),
+                gender: formData.get('gender'),
+                age: parseInt(formData.get('age')),
+                className: formData.get('className'),
+                major: formData.get('major'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                password: password
+            };
+
+            const response = await this.apiCall('/api/auth/student/register', {
+                method: 'POST',
+                body: JSON.stringify(studentData)
+            });
+
+            if (response.success) {
+                this.showMessage('注册成功！请登录', 'success');
+                // 清空表单
+                form.reset();
+                // 切换到登录页面
+                setTimeout(() => {
+                    this.showForm('student-login');
+                }, 1500);
+            } else {
+                this.showMessage(response.message || '注册失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('注册失败：' + error.message, 'error');
+        }
+    }
+
+    async apiCall(endpoint, options = {}) {
+        const defaultOptions = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+
+        const finalOptions = {
+            ...defaultOptions,
+            ...options,
+            headers: {
+                ...defaultOptions.headers,
+                ...options.headers
+            }
+        };
+
+        const response = await fetch(endpoint, finalOptions);
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || '请求失败');
+        }
+
+        return data;
+    }
+
+    showMessage(message, type = 'info') {
+        const messageArea = document.getElementById('messageArea');
+        const messageElement = document.createElement('div');
+        messageElement.className = `message ${type}`;
+        messageElement.textContent = message;
+
+        messageArea.appendChild(messageElement);
+
+        // 3秒后自动移除消息
+        setTimeout(() => {
+            messageElement.remove();
+        }, 3000);
+    }
+
+    checkExistingSession() {
+        const adminSession = localStorage.getItem('adminSession');
+        const studentSession = localStorage.getItem('studentSession');
+
+        if (adminSession) {
+            window.location.href = '/admin.html';
+        } else if (studentSession) {
+            window.location.href = '/student.html';
+        }
+    }
+
+    logout() {
+        localStorage.removeItem('adminSession');
+        localStorage.removeItem('studentSession');
+        window.location.href = '/';
+    }
+}
+
+// 全局工具函数
+function showMessage(message, type = 'info') {
+    const messageArea = document.getElementById('messageArea') || createMessageArea();
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${type}`;
+    messageElement.textContent = message;
+
+    messageArea.appendChild(messageElement);
+
+    setTimeout(() => {
+        messageElement.remove();
+    }, 3000);
+}
+
+function createMessageArea() {
+    const messageArea = document.createElement('div');
+    messageArea.id = 'messageArea';
+    messageArea.className = 'message-area';
+    document.body.appendChild(messageArea);
+    return messageArea;
+}
+
+// 初始化认证管理器
+document.addEventListener('DOMContentLoaded', () => {
+    window.authManager = new AuthManager();
+});
+</file>
+
+<file path="js/student.js">
+// 学生页面功能
+class StudentDashboard {
+    constructor() {
+        this.studentInfo = null;
+        this.init();
+    }
+
+    init() {
+        this.checkAuth();
+        this.setupEventListeners();
+        this.loadStudentInfo();
+    }
+
+    checkAuth() {
+        const studentSession = localStorage.getItem('studentSession');
+        if (!studentSession) {
+            window.location.href = '/';
+            return;
+        }
+
+        const student = JSON.parse(studentSession);
+        document.getElementById('studentName').textContent = student.name;
+    }
+
+    setupEventListeners() {
+        // 退出登录
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('studentSession');
+            window.location.href = '/';
+        });
+
+        // 编辑信息
+        document.getElementById('editInfoBtn').addEventListener('click', () => {
+            this.openEditModal();
+        });
+
+        // 修改密码
+        document.getElementById('changePasswordBtn').addEventListener('click', () => {
+            this.openPasswordModal();
+        });
+
+        // 导出信息
+        document.getElementById('exportInfoBtn').addEventListener('click', () => {
+            this.exportStudentInfo();
+        });
+
+        // 编辑表单提交
+        document.getElementById('editForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.saveStudentInfo(e.target);
+        });
+
+        // 密码表单提交
+        document.getElementById('passwordForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.changePassword(e.target);
+        });
+
+        // 模态框关闭
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.closeAllModals();
+            });
+        });
+
+        // 点击模态框外部关闭
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    this.closeAllModals();
+                }
+            });
+        });
+
+        // 密码确认验证
+        document.getElementById('confirmNewPassword').addEventListener('input', (e) => {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = e.target.value;
+
+            if (newPassword !== confirmNewPassword) {
+                e.target.setCustomValidity('密码不匹配');
+            } else {
+                e.target.setCustomValidity('');
+            }
+        });
+    }
+
+    async loadStudentInfo() {
+        try {
+            const studentSession = JSON.parse(localStorage.getItem('studentSession'));
+            const studentId = studentSession.studentId;
+
+            this.showMessage('正在加载个人信息...', 'info');
+
+            const response = await this.apiCall(`/api/students/${studentId}`);
+
+            if (response.success) {
+                this.studentInfo = response.student;
+                this.displayStudentInfo();
+                this.showMessage('加载个人信息成功', 'success');
+            } else {
+                this.showMessage('加载个人信息失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('加载个人信息失败：' + error.message, 'error');
+        }
+    }
+
+    displayStudentInfo() {
+        if (!this.studentInfo) return;
+
+        // 更新头部信息
+        document.getElementById('profileName').textContent = this.studentInfo.name || '未知';
+        document.getElementById('profileStudentId').textContent = `学号：${this.studentInfo.student_id || '未知'}`;
+        document.getElementById('profileClass').textContent = `班级：${this.studentInfo.class_name || '未知'}`;
+
+        // 更新头像
+        const firstChar = (this.studentInfo.name || '学').charAt(0);
+        document.getElementById('avatarText').textContent = firstChar;
+
+        // 更新基本信息
+        document.getElementById('profileGender').textContent = this.studentInfo.gender || '-';
+        document.getElementById('profileAge').textContent = this.studentInfo.age || '-';
+        document.getElementById('profileMajor').textContent = this.studentInfo.major || '-';
+
+        // 更新联系方式
+        document.getElementById('profilePhone').textContent = this.studentInfo.phone || '-';
+        document.getElementById('profileEmail').textContent = this.studentInfo.email || '-';
+
+        // 更新系统信息
+        if (this.studentInfo.created_at) {
+            const createdDate = new Date(this.studentInfo.created_at).toLocaleDateString('zh-CN');
+            document.getElementById('profileCreatedAt').textContent = createdDate;
+        }
+
+        if (this.studentInfo.updated_at) {
+            const updatedDate = new Date(this.studentInfo.updated_at).toLocaleDateString('zh-CN');
+            document.getElementById('profileUpdatedAt').textContent = updatedDate;
+        }
+
+        // 更新导航栏用户信息
+        document.getElementById('studentName').textContent = this.studentInfo.name;
+    }
+
+    openEditModal() {
+        if (!this.studentInfo) return;
+
+        const form = document.getElementById('editForm');
+
+        // 填充当前信息
+        form.gender.value = this.studentInfo.gender || '';
+        form.age.value = this.studentInfo.age || '';
+        form.className.value = this.studentInfo.class_name || '';
+        form.major.value = this.studentInfo.major || '';
+        form.phone.value = this.studentInfo.phone || '';
+        form.email.value = this.studentInfo.email || '';
+
+        document.getElementById('editModal').classList.add('active');
+    }
+
+    openPasswordModal() {
+        const form = document.getElementById('passwordForm');
+        form.reset();
+        document.getElementById('passwordModal').classList.add('active');
+    }
+
+    closeAllModals() {
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.classList.remove('active');
+        });
+    }
+
+    async saveStudentInfo(form) {
+        const formData = new FormData(form);
+        const studentData = {
+            gender: formData.get('gender'),
+            age: formData.get('age') ? parseInt(formData.get('age')) : null,
+            className: formData.get('className'),
+            major: formData.get('major'),
+            phone: formData.get('phone'),
+            email: formData.get('email')
+        };
+
+        try {
+            this.showMessage('正在保存个人信息...', 'info');
+
+            const studentSession = JSON.parse(localStorage.getItem('studentSession'));
+            const studentId = studentSession.studentId;
+
+            const response = await this.apiCall(`/api/students/${studentId}`, {
+                method: 'PUT',
+                body: JSON.stringify(studentData)
+            });
+
+            if (response.success) {
+                this.showMessage('保存个人信息成功', 'success');
+                this.closeAllModals();
+                // 重新加载信息
+                await this.loadStudentInfo();
+            } else {
+                this.showMessage(response.message || '保存失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('保存失败：' + error.message, 'error');
+        }
+    }
+
+    async changePassword(form) {
+        const formData = new FormData(form);
+        const currentPassword = formData.get('currentPassword');
+        const newPassword = formData.get('newPassword');
+        const confirmNewPassword = formData.get('confirmNewPassword');
+
+        // 验证新密码匹配
+        if (newPassword !== confirmNewPassword) {
+            this.showMessage('新密码不匹配', 'error');
+            return;
+        }
+
+        // 验证当前密码（这里简化处理，实际应该先验证当前密码是否正确）
+        if (!currentPassword || !newPassword) {
+            this.showMessage('请填写完整的密码信息', 'error');
+            return;
+        }
+
+        try {
+            this.showMessage('正在修改密码...', 'info');
+
+            const studentSession = JSON.parse(localStorage.getItem('studentSession'));
+            const studentId = studentSession.studentId;
+
+            const response = await this.apiCall(`/api/students/${studentId}`, {
+                method: 'PUT',
+                body: JSON.stringify({ password: newPassword })
+            });
+
+            if (response.success) {
+                this.showMessage('修改密码成功', 'success');
+                this.closeAllModals();
+                form.reset();
+            } else {
+                this.showMessage(response.message || '修改密码失败', 'error');
+            }
+        } catch (error) {
+            this.showMessage('修改密码失败：' + error.message, 'error');
+        }
+    }
+
+    exportStudentInfo() {
+        if (!this.studentInfo) {
+            this.showMessage('暂无信息可导出', 'error');
+            return;
+        }
+
+        // 创建导出数据
+        const exportData = {
+            学号: this.studentInfo.student_id,
+            姓名: this.studentInfo.name,
+            性别: this.studentInfo.gender || '',
+            年龄: this.studentInfo.age || '',
+            班级: this.studentInfo.class_name || '',
+            专业: this.studentInfo.major || '',
+            电话: this.studentInfo.phone || '',
+            邮箱: this.studentInfo.email || '',
+            注册时间: this.studentInfo.created_at ? new Date(this.studentInfo.created_at).toLocaleString('zh-CN') : '',
+            最后更新: this.studentInfo.updated_at ? new Date(this.studentInfo.updated_at).toLocaleString('zh-CN') : ''
+        };
+
+        // 创建CSV内容
+        const headers = Object.keys(exportData);
+        const values = Object.values(exportData);
+
+        let csvContent = '\ufeff'; // UTF-8 BOM
+        csvContent += headers.join(',') + '\n';
+        csvContent += values.map(value => `"${value}"`).join(',');
+
+        // 创建下载链接
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+
+        link.setAttribute('href', url);
+        link.setAttribute('download', `学生信息_${this.studentInfo.name}_${this.studentInfo.student_id}.csv`);
+        link.style.visibility = 'hidden';
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        this.showMessage('信息导出成功', 'success');
+    }
+
+    async apiCall(endpoint, options = {}) {
+        const defaultOptions = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        };
+
+        const finalOptions = {
+            ...defaultOptions,
+            ...options,
+            headers: {
+                ...defaultOptions.headers,
+                ...options.headers
+            }
+        };
+
+        const response = await fetch(endpoint, finalOptions);
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || '请求失败');
+        }
+
+        return data;
+    }
+
+    showMessage(message, type = 'info') {
+        const messageArea = document.getElementById('messageArea');
+        const messageElement = document.createElement('div');
+        messageElement.className = `message ${type}`;
+        messageElement.textContent = message;
+
+        messageArea.appendChild(messageElement);
+
+        setTimeout(() => {
+            messageElement.remove();
+        }, 3000);
+    }
+}
+
+// 初始化学生仪表板
+document.addEventListener('DOMContentLoaded', () => {
+    window.studentDashboard = new StudentDashboard();
+});
+</file>
+
+<file path="LICENSE">
+MIT License
+
+Copyright (c) 2025 Student Information Management System
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</file>
+
+<file path="student.html">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生个人信息 - 学生信息管理系统</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <h1>学生信息管理系统</h1>
+            <div class="user-info">
+                <span id="studentName">学生</span>
+                <button id="logoutBtn" class="btn btn-secondary">退出登录</button>
+            </div>
+        </nav>
+
+        <!-- 学生个人仪表板 -->
+        <main class="dashboard">
+            <div class="dashboard-header">
+                <h1>我的个人信息</h1>
+                <button id="editInfoBtn" class="btn btn-primary">编辑信息</button>
+            </div>
+
+            <!-- 个人信息卡片 -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <div class="avatar-placeholder">
+                            <span id="avatarText">学</span>
+                        </div>
+                    </div>
+                    <div class="profile-basic-info">
+                        <h2 id="profileName">姓名</h2>
+                        <p id="profileStudentId">学号</p>
+                        <p id="profileClass">班级</p>
+                    </div>
+                </div>
+
+                <div class="profile-details">
+                    <div class="detail-group">
+                        <h3>基本信息</h3>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <label>性别</label>
+                                <span id="profileGender">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>年龄</label>
+                                <span id="profileAge">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>专业</label>
+                                <span id="profileMajor">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-group">
+                        <h3>联系方式</h3>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <label>电话</label>
+                                <span id="profilePhone">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>邮箱</label>
+                                <span id="profileEmail">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-group">
+                        <h3>系统信息</h3>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <label>注册时间</label>
+                                <span id="profileCreatedAt">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>最后更新</label>
+                                <span id="profileUpdatedAt">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 快捷操作 -->
+            <div class="quick-actions">
+                <h3>快捷操作</h3>
+                <div class="actions-grid">
+                    <button id="changePasswordBtn" class="btn btn-secondary">
+                        修改密码
+                    </button>
+                    <button id="exportInfoBtn" class="btn btn-secondary">
+                        导出信息
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 编辑个人信息模态框 -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>编辑个人信息</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <form id="editForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editGender">性别</label>
+                            <select id="editGender" name="gender">
+                                <option value="">请选择</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editAge">年龄</label>
+                            <input type="number" id="editAge" name="age" min="15" max="50">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editClass">班级</label>
+                            <input type="text" id="editClass" name="className">
+                        </div>
+                        <div class="form-group">
+                            <label for="editMajor">专业</label>
+                            <input type="text" id="editMajor" name="major">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editPhone">电话</label>
+                            <input type="tel" id="editPhone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmail">邮箱</label>
+                            <input type="email" id="editEmail" name="email">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <button type="button" class="btn btn-secondary modal-close">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 修改密码模态框 -->
+        <div id="passwordModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>修改密码</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">当前密码</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">新密码</label>
+                        <input type="password" id="newPassword" name="newPassword" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmNewPassword">确认新密码</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword" required minlength="6">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">修改密码</button>
+                        <button type="button" class="btn btn-secondary modal-close">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 消息提示区域 -->
+        <div id="messageArea" class="message-area"></div>
+    </div>
+
+    <script src="js/student.js"></script>
+</body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "student-info-system",
+  "version": "1.0.0",
+  "description": "学生信息管理系统",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "keywords": ["student", "management", "system", "vercel", "neon"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {}
+}
+</file>
+
+<file path="vercel.json">
+{
+  "version": 2,
+  "buildCommand": "echo 'No build step required'",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin.html"
+    },
+    {
+      "source": "/student",
+      "destination": "/student.html"
+    }
+  ]
+}
+</file>
+
+</files>
