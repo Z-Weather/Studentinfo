@@ -1,4 +1,11 @@
 // 管理员页面功能
+// ------------------------------------------------------------
+// AdminDashboard 负责管理员端的学生信息管理：
+// - 会话检查与页面初始化
+// - 搜索、筛选、分页展示
+// - 添加/编辑/删除学生（通过后端 API）
+// - 模态框交互与用户消息提示
+// ------------------------------------------------------------
 class AdminDashboard {
     constructor() {
         this.currentEditingStudent = null;
@@ -11,12 +18,14 @@ class AdminDashboard {
     }
 
     init() {
+        // 初始化：确保已登录管理员 -> 绑定事件 -> 拉取学生数据
         this.checkAuth();
         this.setupEventListeners();
         this.loadStudents();
     }
 
     checkAuth() {
+        // 会话校验：未登录则返回首页
         const adminSession = localStorage.getItem('adminSession');
         if (!adminSession) {
             window.location.href = '/';
@@ -28,18 +37,18 @@ class AdminDashboard {
     }
 
     setupEventListeners() {
-        // 退出登录
+        // 退出登录：清理会话并回到登录页
         document.getElementById('logoutBtn').addEventListener('click', () => {
             localStorage.removeItem('adminSession');
             window.location.href = '/';
         });
 
-        // 添加学生
+        // 添加学生：打开学生信息编辑模态框
         document.getElementById('addStudentBtn').addEventListener('click', () => {
             this.openStudentModal();
         });
 
-        // 搜索功能
+        // 搜索功能：支持按钮与 Enter 键触发
         document.getElementById('searchBtn').addEventListener('click', () => {
             this.searchStudents();
         });
@@ -50,7 +59,7 @@ class AdminDashboard {
             }
         });
 
-        // 筛选功能
+        // 筛选功能：按班级与专业筛选
         document.getElementById('filterBtn').addEventListener('click', () => {
             this.filterStudents();
         });
@@ -267,6 +276,7 @@ class AdminDashboard {
         this.currentEditingStudent = student;
 
         if (student) {
+            // 编辑模式：填充现有数据，禁用学号（主键不可改）
             modalTitle.textContent = '编辑学生信息';
             form.studentId.value = student.student_id;
             form.studentId.disabled = true;
@@ -280,6 +290,7 @@ class AdminDashboard {
             form.password.value = '';
             form.password.placeholder = '留空则不修改密码';
         } else {
+            // 添加模式：清空表单，允许输入学号与密码
             modalTitle.textContent = '添加学生';
             form.reset();
             form.studentId.disabled = false;
@@ -290,6 +301,7 @@ class AdminDashboard {
     }
 
     closeAllModals() {
+        // 统一关闭所有模态框并重置当前编辑状态
         document.querySelectorAll('.modal').forEach(modal => {
             modal.classList.remove('active');
         });
@@ -304,6 +316,7 @@ class AdminDashboard {
     }
 
     deleteStudent(studentId, studentName) {
+        // 删除流程：先展示确认模态框，避免误删
         this.currentEditingStudent = studentId;
         document.getElementById('deleteStudentName').textContent = studentName;
         document.getElementById('deleteModal').classList.add('active');
@@ -332,6 +345,7 @@ class AdminDashboard {
     }
 
     async saveStudent(form) {
+        // 保存学生信息：根据当前模式选择添加或更新
         const formData = new FormData(form);
         const studentData = {
             name: formData.get('name'),
@@ -343,7 +357,7 @@ class AdminDashboard {
             email: formData.get('email')
         };
 
-        // 只有在填写密码时才包含密码字段
+        // 只有在填写密码时才包含密码字段：避免无意覆盖
         const password = formData.get('password');
         if (password) {
             studentData.password = password;
@@ -354,13 +368,13 @@ class AdminDashboard {
 
             let response;
             if (this.currentEditingStudent) {
-                // 更新学生
+                // 更新学生：PUT /api/students/:id
                 response = await this.apiCall(`/api/students/${this.currentEditingStudent}`, {
                     method: 'PUT',
                     body: JSON.stringify(studentData)
                 });
             } else {
-                // 添加学生
+                // 添加学生：POST /api/students
                 studentData.studentId = formData.get('studentId');
                 response = await this.apiCall('/api/students', {
                     method: 'POST',

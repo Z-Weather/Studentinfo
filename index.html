@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<!--
+  登录与注册入口页
+  作用：
+  - 提供管理员登录、学生登录与学生注册三种入口
+  - 与 js/auth.js 配合：切换表单、处理提交、展示消息提示
+  结构导航：
+  - 顶部导航栏（系统标题）
+  - 选择器按钮（切换不同表单）
+  - 三个表单区域（管理员登录 / 学生登录 / 学生注册）
+  - 全局消息提示区域（统一展示操作结果）
+-->
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -13,9 +24,9 @@
             <h1>学生信息管理系统</h1>
         </nav>
 
-        <!-- 主要内容区域 -->
+        <!-- 主要内容区域：承载认证选择与表单 -->
         <main class="main-content">
-            <!-- 登录注册选择器 -->
+            <!-- 登录注册选择器：通过按钮切换显示的表单 -->
             <div class="auth-selector">
                 <div class="selector-buttons">
                     <button id="adminLoginBtn" class="selector-btn active">管理员登录</button>
@@ -24,7 +35,7 @@
                 </div>
             </div>
 
-            <!-- 管理员登录表单 -->
+            <!-- 管理员登录表单：用户名 + 密码；提交后跳转管理员页面 -->
             <div id="adminLoginForm" class="auth-form active">
                 <div class="form-container">
                     <h2>管理员登录</h2>
@@ -45,7 +56,7 @@
                 </div>
             </div>
 
-            <!-- 学生登录表单 -->
+            <!-- 学生登录表单：学号 + 密码；提交后跳转学生页面 -->
             <div id="studentLoginForm" class="auth-form">
                 <div class="form-container">
                     <h2>学生登录</h2>
@@ -63,7 +74,7 @@
                 </div>
             </div>
 
-            <!-- 学生注册表单 -->
+            <!-- 学生注册表单：基本资料 + 登录凭据；前后端双重校验 -->
             <div id="studentRegisterForm" class="auth-form">
                 <div class="form-container">
                     <h2>学生注册</h2>
@@ -126,10 +137,11 @@
             </div>
         </main>
 
-        <!-- 消息提示区域 -->
+        <!-- 消息提示区域：短暂显示操作结果（成功/错误/提示） -->
         <div id="messageArea" class="message-area"></div>
     </div>
 
+    <!-- 页面脚本：绑定事件与认证流程（见 js/auth.js） -->
     <script src="js/auth.js"></script>
 </body>
 </html>

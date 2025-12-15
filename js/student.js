@@ -1,4 +1,11 @@
 // 学生页面功能
+// ------------------------------------------------------------
+// StudentDashboard 负责学生端的个人信息管理：
+// - 会话检查与页面初始化
+// - 查看与编辑个人信息
+// - 修改密码与导出信息
+// - 模态框交互与用户消息提示
+// ------------------------------------------------------------
 class StudentDashboard {
     constructor() {
         this.studentInfo = null;
@@ -6,12 +13,14 @@ class StudentDashboard {
     }
 
     init() {
+        // 初始化：确保已登录学生 -> 绑定事件 -> 拉取个人信息
         this.checkAuth();
         this.setupEventListeners();
         this.loadStudentInfo();
     }
 
     checkAuth() {
+        // 会话校验：未登录则返回首页
         const studentSession = localStorage.getItem('studentSession');
         if (!studentSession) {
             window.location.href = '/';
@@ -23,47 +32,47 @@ class StudentDashboard {
     }
 
     setupEventListeners() {
-        // 退出登录
+        // 退出登录：清理会话并回到登录页
         document.getElementById('logoutBtn').addEventListener('click', () => {
             localStorage.removeItem('studentSession');
             window.location.href = '/';
         });
 
-        // 编辑信息
+        // 编辑信息：打开编辑模态框
         document.getElementById('editInfoBtn').addEventListener('click', () => {
             this.openEditModal();
         });
 
-        // 修改密码
+        // 修改密码：打开密码修改模态框
         document.getElementById('changePasswordBtn').addEventListener('click', () => {
             this.openPasswordModal();
         });
 
-        // 导出信息
+        // 导出信息：将个人信息导出为文件（实现见 exportStudentInfo）
         document.getElementById('exportInfoBtn').addEventListener('click', () => {
             this.exportStudentInfo();
         });
 
-        // 编辑表单提交
+        // 编辑表单提交：阻止原生提交并调用保存逻辑
         document.getElementById('editForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.saveStudentInfo(e.target);
         });
 
-        // 密码表单提交
+        // 密码表单提交：阻止原生提交并调用修改密码逻辑
         document.getElementById('passwordForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.changePassword(e.target);
         });
 
-        // 模态框关闭
+        // 模态框关闭：统一关闭行为
         document.querySelectorAll('.modal-close').forEach(btn => {
             btn.addEventListener('click', () => {
                 this.closeAllModals();
             });
         });
 
-        // 点击模态框外部关闭
+        // 点击模态框外部关闭：提升易用性
         document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
@@ -72,7 +81,7 @@ class StudentDashboard {
             });
         });
 
-        // 密码确认验证
+        // 密码确认验证：输入时即时提示，提高表单可用性
         document.getElementById('confirmNewPassword').addEventListener('input', (e) => {
             const newPassword = document.getElementById('newPassword').value;
             const confirmNewPassword = e.target.value;

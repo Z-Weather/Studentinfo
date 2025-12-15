@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!--
+  管理员仪表板页面
+  作用：
+  - 展示学生列表，支持搜索/筛选/分页
+  - 通过模态框添加与编辑学生信息
+  - 通过确认模态框删除学生
+  交互：
+  - 事件绑定与数据加载逻辑在 js/admin.js 中实现
+-->
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +26,7 @@
             </div>
         </nav>
 
-        <!-- 管理员仪表板 -->
+        <!-- 管理员仪表板：核心管理区域 -->
         <main class="dashboard">
             <div class="dashboard-header">
                 <h1>学生信息管理</h1>
@@ -42,7 +51,7 @@
                 </div>
             </div>
 
-            <!-- 学生信息表格 -->
+            <!-- 学生信息表格：通过 JavaScript 动态填充 -->
             <div class="table-container">
                 <table id="studentsTable">
                     <thead>
@@ -67,7 +76,7 @@
                 </div>
             </div>
 
-            <!-- 分页控件 -->
+            <!-- 分页控件：上一页/下一页与页码提示 -->
             <div class="pagination">
                 <button id="prevPageBtn">上一页</button>
                 <span id="pageInfo">第 1 页，共 1 页</span>
@@ -75,7 +84,7 @@
             </div>
         </main>
 
-        <!-- 添加/编辑学生模态框 -->
+        <!-- 添加/编辑学生模态框：复用同一表单完成两种模式 -->
         <div id="studentModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -139,7 +148,7 @@
             </div>
         </div>
 
-        <!-- 删除确认模态框 -->
+        <!-- 删除确认模态框：防止误删，需明确确认 -->
         <div id="deleteModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -154,10 +163,11 @@
             </div>
         </div>
 
-        <!-- 消息提示区域 -->
+        <!-- 消息提示区域：统一展示操作结果 -->
         <div id="messageArea" class="message-area"></div>
     </div>
 
+    <!-- 页面脚本：管理员端交互逻辑（见 js/admin.js） -->
     <script src="js/admin.js"></script>
 </body>
 </html>

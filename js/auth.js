@@ -1,4 +1,13 @@
 // 认证相关功能
+// ------------------------------------------------------------
+// 该文件实现前端认证与会话相关的核心逻辑，包括：
+// 1) 表单展示切换（管理员登录/学生登录/学生注册）
+// 2) 表单提交事件处理（登录与注册）
+// 3) 前端基础校验（例如密码确认一致性）
+// 4) 统一的 API 调用封装与消息提示
+// 5) 已有会话的自动跳转（提升用户体验）
+// 使用方式：在页面加载完成后初始化 AuthManager（见文末 DOMContentLoaded）
+// ------------------------------------------------------------
 class AuthManager {
     constructor() {
         this.currentUser = null;
@@ -6,12 +15,13 @@ class AuthManager {
     }
 
     init() {
+        // 初始化阶段：绑定事件 + 检查是否已有登录会话
         this.setupEventListeners();
         this.checkExistingSession();
     }
 
     setupEventListeners() {
-        // 认证选择器按钮事件
+        // 认证选择器按钮事件：控制三种表单的显示
         document.getElementById('adminLoginBtn').addEventListener('click', () => {
             this.showForm('admin');
         });
@@ -24,7 +34,7 @@ class AuthManager {
             this.showForm('student-register');
         });
 
-        // 表单提交事件
+        // 表单提交事件：阻止原生提交，改为前端异步处理
         document.getElementById('adminLogin').addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleAdminLogin(e.target);
@@ -40,7 +50,7 @@ class AuthManager {
             this.handleStudentRegister(e.target);
         });
 
-        // 密码确认验证
+        // 密码确认验证：输入时即时提示，提高表单可用性
         document.getElementById('regConfirmPassword').addEventListener('input', (e) => {
             const password = document.getElementById('regPassword').value;
             const confirmPassword = e.target.value;
@@ -54,7 +64,7 @@ class AuthManager {
     }
 
     showForm(formType) {
-        // 隐藏所有表单
+        // 隐藏所有表单，移除按钮高亮，再显示目标表单
         document.querySelectorAll('.auth-form').forEach(form => {
             form.classList.remove('active');
         });
@@ -64,7 +74,7 @@ class AuthManager {
             btn.classList.remove('active');
         });
 
-        // 显示选中的表单
+        // 显示选中的表单并高亮对应按钮
         switch(formType) {
             case 'admin':
                 document.getElementById('adminLoginForm').classList.add('active');
@@ -82,6 +92,7 @@ class AuthManager {
     }
 
     async handleAdminLogin(form) {
+        // 管理员登录流程：收集表单 -> 调用后端 -> 存储会话 -> 页面跳转
         const formData = new FormData(form);
         const username = formData.get('username');
         const password = formData.get('password');
@@ -96,14 +107,14 @@ class AuthManager {
 
             if (response.success) {
                 this.showMessage('登录成功！', 'success');
-                // 保存会话信息
+                // 保存会话信息：仅保存必要的标识数据，避免敏感信息泄露
                 localStorage.setItem('adminSession', JSON.stringify({
                     id: response.admin.id,
                     username: response.admin.username,
                     type: 'admin'
                 }));
 
-                // 跳转到管理员页面
+                // 跳转到管理员页面：稍作延迟以展示提示
                 setTimeout(() => {
                     window.location.href = '/admin.html';
                 }, 1000);
@@ -111,11 +122,13 @@ class AuthManager {
                 this.showMessage(response.message || '登录失败', 'error');
             }
         } catch (error) {
+            // 统一错误提示：后端错误或网络异常
             this.showMessage('登录失败：' + error.message, 'error');
         }
     }
 
     async handleStudentLogin(form) {
+        // 学生登录流程：与管理员登录类似
         const formData = new FormData(form);
         const studentId = formData.get('studentId');
         const password = formData.get('password');
@@ -130,7 +143,7 @@ class AuthManager {
 
             if (response.success) {
                 this.showMessage('登录成功！', 'success');
-                // 保存会话信息
+                // 保存会话信息：用于后续页面展示与权限分流
                 localStorage.setItem('studentSession', JSON.stringify({
                     studentId: response.student.student_id,
                     name: response.student.name,
@@ -150,11 +163,12 @@ class AuthManager {
     }
 
     async handleStudentRegister(form) {
+        // 学生注册流程：前端做基础校验，后端做严格校验与入库
         const formData = new FormData(form);
         const password = formData.get('password');
         const confirmPassword = formData.get('confirmPassword');
 
-        // 验证密码匹配
+        // 验证密码匹配：避免无效请求
         if (password !== confirmPassword) {
             this.showMessage('密码不匹配', 'error');
             return;
@@ -163,6 +177,7 @@ class AuthManager {
         try {
             this.showMessage('正在注册...', 'info');
 
+            // 采集表单字段并进行基本类型处理
             const studentData = {
                 studentId: formData.get('studentId'),
                 name: formData.get('name'),
@@ -182,9 +197,8 @@ class AuthManager {
 
             if (response.success) {
                 this.showMessage('注册成功！请登录', 'success');
-                // 清空表单
+                // 清空表单并引导用户前往登录
                 form.reset();
-                // 切换到登录页面
                 setTimeout(() => {
                     this.showForm('student-login');
                 }, 1500);
@@ -197,6 +211,7 @@ class AuthManager {
     }
 
     async apiCall(endpoint, options = {}) {
+        // 统一的 API 调用封装：规范请求头、错误处理与返回结构
         const defaultOptions = {
             headers: {
                 'Content-Type': 'application/json',
@@ -223,6 +238,7 @@ class AuthManager {
     }
 
     showMessage(message, type = 'info') {
+        // 在页面右上角/指定区域展示短暂消息提示
         const messageArea = document.getElementById('messageArea');
         const messageElement = document.createElement('div');
         messageElement.className = `message ${type}`;
@@ -237,6 +253,7 @@ class AuthManager {
     }
 
     checkExistingSession() {
+        // 如果已登录，直接分流到对应页面，避免重复登录
         const adminSession = localStorage.getItem('adminSession');
         const studentSession = localStorage.getItem('studentSession');
 
@@ -248,6 +265,7 @@ class AuthManager {
     }
 
     logout() {
+        // 清理所有会话信息并返回主页
         localStorage.removeItem('adminSession');
         localStorage.removeItem('studentSession');
         window.location.href = '/';
@@ -256,6 +274,7 @@ class AuthManager {
 
 // 全局工具函数
 function showMessage(message, type = 'info') {
+    // 备用消息函数：当页面没有消息区域时自动创建
     const messageArea = document.getElementById('messageArea') || createMessageArea();
     const messageElement = document.createElement('div');
     messageElement.className = `message ${type}`;
@@ -269,6 +288,7 @@ function showMessage(message, type = 'info') {
 }
 
 function createMessageArea() {
+    // 动态创建消息区域：兼容不同页面结构
     const messageArea = document.createElement('div');
     messageArea.id = 'messageArea';
     messageArea.className = 'message-area';
@@ -278,5 +298,6 @@ function createMessageArea() {
 
 // 初始化认证管理器
 document.addEventListener('DOMContentLoaded', () => {
+    // 页面就绪后实例化并接管表单逻辑
     window.authManager = new AuthManager();
 });

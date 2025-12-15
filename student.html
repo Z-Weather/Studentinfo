@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!--
+  学生个人信息页面
+  作用：
+  - 展示当前登录学生的个人信息与系统信息
+  - 支持编辑个人资料与修改密码
+  - 提供导出信息的快捷操作
+  交互：
+  - 事件绑定与数据加载逻辑在 js/student.js 中实现
+-->
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -17,14 +26,14 @@
             </div>
         </nav>
 
-        <!-- 学生个人仪表板 -->
+        <!-- 学生个人仪表板：信息展示与操作入口 -->
         <main class="dashboard">
             <div class="dashboard-header">
                 <h1>我的个人信息</h1>
                 <button id="editInfoBtn" class="btn btn-primary">编辑信息</button>
             </div>
 
-            <!-- 个人信息卡片 -->
+            <!-- 个人信息卡片：基础信息 + 联系方式 + 系统信息 -->
             <div class="profile-card">
                 <div class="profile-header">
                     <div class="profile-avatar">
@@ -88,7 +97,7 @@
                 </div>
             </div>
 
-            <!-- 快捷操作 -->
+            <!-- 快捷操作：常用功能入口 -->
             <div class="quick-actions">
                 <h3>快捷操作</h3>
                 <div class="actions-grid">
@@ -102,7 +111,7 @@
             </div>
         </main>
 
-        <!-- 编辑个人信息模态框 -->
+        <!-- 编辑个人信息模态框：修改公开资料 -->
         <div id="editModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -152,7 +161,7 @@
             </div>
         </div>
 
-        <!-- 修改密码模态框 -->
+        <!-- 修改密码模态框：更改登录凭据（需校验一致性） -->
         <div id="passwordModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -180,10 +189,11 @@
             </div>
         </div>
 
-        <!-- 消息提示区域 -->
+        <!-- 消息提示区域：统一展示操作结果 -->
         <div id="messageArea" class="message-area"></div>
     </div>
 
+    <!-- 页面脚本：学生端交互逻辑（见 js/student.js） -->
     <script src="js/student.js"></script>
 </body>
 </html>
