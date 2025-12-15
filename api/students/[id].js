@@ -9,6 +9,7 @@
 // - 参数校验与统一错误响应
 // ------------------------------------------------------------
 const { Pool } = require('pg');
+const crypto = require('crypto');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -141,9 +142,11 @@ module.exports = async (req, res) => {
             }
 
             if (password !== undefined) {
-                // 注意：示例为明文存储，生产环境需加密
+                const salt = crypto.randomBytes(16).toString('hex');
+                const derived = crypto.scryptSync(password, salt, 64).toString('hex');
+                const storedPassword = `scrypt$${salt}$${derived}`;
                 updates.push(`password = $${paramIndex}`);
-                updateParams.push(password);
+                updateParams.push(storedPassword);
                 paramIndex++;
             }
 

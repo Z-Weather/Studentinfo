@@ -5,6 +5,7 @@
 // 安全提示：示例为明文密码对比，实际应使用加密存储与校验（如 bcrypt.compare）
 // ------------------------------------------------------------
 const { Pool } = require('pg');
+const crypto = require('crypto');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -55,9 +56,16 @@ module.exports = async (req, res) => {
 
         const student = result.rows[0];
 
-        // 注意：这里为了简化，直接比较明文密码
-        // 实际生产环境中应该使用 bcrypt 等加密方式
-        if (student.password !== password) {
+        let ok = false;
+        if (typeof student.password === 'string' && student.password.startsWith('scrypt$')) {
+            const [, salt, hash] = student.password.split('$');
+            const derived = crypto.scryptSync(password, salt, 64).toString('hex');
+            ok = crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(derived, 'hex'));
+        } else {
+            ok = student.password === password;
+        }
+
+        if (!ok) {
             return res.status(401).json({
                 success: false,
                 message: '学号或密码错误'

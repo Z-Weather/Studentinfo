@@ -8,6 +8,7 @@
 // - 统一错误响应与日志
 // ------------------------------------------------------------
 const { Pool } = require('pg');
+const crypto = require('crypto');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -78,7 +79,6 @@ module.exports = async (req, res) => {
             });
 
         } catch (error) {
-            // 统一错误日志与响应
             console.error('获取学生信息错误:', error);
             res.status(500).json({
                 success: false,
@@ -127,9 +127,16 @@ module.exports = async (req, res) => {
                 RETURNING student_id, name, gender, age, class_name, major, phone, email, created_at
             `;
 
+            let storedPassword = null;
+            if (password) {
+                const salt = crypto.randomBytes(16).toString('hex');
+                const derived = crypto.scryptSync(password, salt, 64).toString('hex');
+                storedPassword = `scrypt$${salt}$${derived}`;
+            }
+
             const insertResult = await pool.query(insertQuery, [
                 studentId, name, gender || null, age || null, className || null,
-                major || null, phone || null, email || null, password
+                major || null, phone || null, email || null, storedPassword
             ]);
 
             res.status(201).json({

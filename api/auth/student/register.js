@@ -8,6 +8,7 @@
 // 安全提示：当前示例使用明文密码，生产环境需使用加密存储（如 bcrypt）
 // ------------------------------------------------------------
 const { Pool } = require('pg');
+const crypto = require('crypto');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -88,8 +89,12 @@ module.exports = async (req, res) => {
             RETURNING student_id, name, gender, age, class_name, major, phone, email
         `;
 
+        const salt = crypto.randomBytes(16).toString('hex');
+        const derived = crypto.scryptSync(password, salt, 64).toString('hex');
+        const storedPassword = `scrypt$${salt}$${derived}`;
+
         const insertResult = await pool.query(insertQuery, [
-            studentId, name, gender, age, className, major, phone, email, password
+            studentId, name, gender, age, className, major, phone, email, storedPassword
         ]);
 
         const newStudent = insertResult.rows[0];
